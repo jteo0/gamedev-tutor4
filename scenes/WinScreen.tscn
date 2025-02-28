@@ -1,7 +1,18 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://c4bqxeni00aa8"]
 
-[ext_resource path="res://Assets/Keanu.png" type="Texture2D" id=1]
+[ext_resource type="Texture2D" uid="uid://d0xi3jghkp5hk" path="res://Assets/Keanu.png" id="1"]
+[ext_resource type="Script" path="res://scenes/Level2Button.gd" id="2_vw172"]
 
 [node name="WinScreen" type="Sprite2D"]
-position = Vector2( 512.329, 294.151 )
-texture = ExtResource( 1 )
+position = Vector2(512.329, 294.151)
+texture = ExtResource("1")
+
+[node name="Level2Button" type="Button" parent="."]
+offset_left = -105.329
+offset_top = 59.849
+offset_right = 167.671
+offset_bottom = 117.849
+text = "TO THE NEXT LEVEL"
+script = ExtResource("2_vw172")
+
+[connection signal="pressed" from="Level2Button" to="Level2Button" method="_on_pressed"]
