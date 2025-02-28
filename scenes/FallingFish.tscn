@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://bgyq3o64tmiw"]
+
+[ext_resource type="Texture2D" uid="uid://bivk5n8i3vnqc" path="res://assets/kenney_platformerpack/PNG/Enemies/fishBlue.png" id="1_rkp8v"]
+[ext_resource type="PackedScene" uid="uid://dewity8ryinr7" path="res://scenes/AreaTrigger.tscn" id="3_r83q6"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u4dh5"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sew13"]
+radius = 35.0
+height = 110.0
+
+[node name="FallingFish" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_u4dh5")
+
+[node name="FallFish" type="Sprite2D" parent="."]
+rotation = 3.14159
+texture = ExtResource("1_rkp8v")
+
+[node name="KillZone" parent="." instance=ExtResource("3_r83q6")]
+sceneName = "LoseScreen"
+
+[node name="CollisionShape2D" parent="KillZone" index="0"]
+shape = SubResource("CapsuleShape2D_sew13")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="KillZone" to="." method="_on_kill_zone_body_entered"]
+
+[editable path="KillZone"]
