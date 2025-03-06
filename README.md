@@ -1,7 +1,7 @@
 # Tutorial 4
 On the second level, the following features were added:
 <h3>Respawn Button and Next Level Button</h3>
-I added a button on the LoseScreen scene that takes the global variable CurrentLevel and respawns the player to the level it is set to. I also added the same button to the WinScreen scene to transition from Level 1 to Level 2. The following is the GDScript used for the button:
+When the LoseScreen scene appears, it will have a button that takes the global variable CurrentLevel and respawns the player to the level it is set to. I also added the same button to the WinScreen scene to transition from Level 1 to Level 2. The following is the GDScript used for the button:
 
 ```py
 extends Button
@@ -11,11 +11,33 @@ func _on_pressed() -> void:
 		CurrentLevel.current_level = "res://scenes/Level2.tscn"
 	get_tree().change_scene_to_file(CurrentLevel.current_level)
 ```
-CurrentLevel.current_level is set by default to the Level1 scene, and only switches to level2 when the button is used by WinScreen, after which everytime the player dies, they will be directed to the LoseScreen and can respawn at level 2.<br>
+CurrentLevel.current_level is set by default to the Level1 scene, and only switches to level2 when the button is used by WinScreen (and for testing purposes, when Level 2 is first loaded), after which everytime the player dies, they will be directed to the LoseScreen and can respawn at level 2.<br>
 <h3>Half Saw, Full Saw and Moving Saw Obstacles</h3>
-The obstacles used in the level are the half saws on parts of the floor, static full saws, and moving saws. The Half Saws and Full Saws are made using AnimatedSprite2D, CollisionShape2D, and the AreaTrigger scene made in the tutorial. The animated sprite has only one animation that plays on loop for both
+The obstacles used in the level are the half saws on parts of the floor, static full saws, and moving saws. The Half Saws and Full Saws are made using AnimatedSprite2D, CollisionShape2D, and the AreaTrigger scene made in the tutorial. Both AnimatedSprite2D have only one animation that has autoplay on load and loop enabled for the default spinning animation, while the AreaTrigger scene makes it so that if the player collides with either of them, the Lose Screen will load. The moving saw obstacle (FullMovingSaw scene) is just a FullSaw scene with a script attached. The script is:
+
+```py
+extends StaticBody2D
+
+@export var end_position: Vector2 = Vector2(100, 0)
+@export var move_duration: float = 2.0
+
+@onready var start_position: Vector2 = position
+
+func _ready():
+	start_movement()
+
+func start_movement():
+	var tween = get_tree().create_tween()
+
+	tween.tween_property(self, "position", start_position + end_position, move_duration)
+	tween.tween_property(self, "position", start_position, move_duration)
+	tween.set_loops()
+```
+The tween is what moves the FullSaw up and down on a loop.<br>
 <h3>New Tileset + Spikes</h3>
+The new tileset was made in the same way as the tutorial one, only with the stone spritesheet instead of the dirt one. The spikes were added into the same TileMapLayer as a different set of tiles and uses seperate Area Trigger scenes to kill the player, akin to the out-of-bounds killing field from the tutorial.
 <h3>Falling Weights</h3>
+The falling weights were made in the same way as the falling fish from the tutorial, but their spawn rate was lowered from one every second to one every three seconds because it took too many tries to beat the level at the original spawn rate. The sprite for the weight is in a Sprite2D node, and it's collision is handled by the AreaTrigger scene made during the tutorial. It's collision layer and mask are both set at 2 so that the weights go through the tilesets and saw obstacles. The player's collision and mask layer are also set to 2 in addition to 1 so that it can collide with the falling weights. When the player is hit, the Lose Screen appears.
 <h3>Moving Platform</h3>
 The moving platform was made by using a Path2D node with a PathFollow2D child node, a TileMapLayer child of that, an Area2D child node of that, and a CollisionShape2D child node for that. The Path2D node is for drawing the path that the platform would follow, the PathFollow2D node is for making the platform move and where the script is attached, TileMapLayer is for making the platform itself, and the Area2D and CollisionShape2D nodes are for signalling when the player touches the platform for the first time, which I wanted to make the platform actually start moving. Below is the code attached to the PathFollow2D node:
 
