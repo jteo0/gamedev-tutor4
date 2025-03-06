@@ -42,28 +42,27 @@ The falling weights were made in the same way as the falling fish from the tutor
 The moving platform was made by using a Path2D node with a PathFollow2D child node, a TileMapLayer child of that, an Area2D child node of that, and a CollisionShape2D child node for that. The Path2D node is for drawing the path that the platform would follow, the PathFollow2D node is for making the platform move and where the script is attached, TileMapLayer is for making the platform itself, and the Area2D and CollisionShape2D nodes are for signalling when the player touches the platform for the first time, which I wanted to make the platform actually start moving. Below is the code attached to the PathFollow2D node:
 
 ```py
-extends StaticBody2D
+extends PathFollow2D
 
-var button_pressed = false
-@onready var sprite: Sprite2D = $Sprite2D
-@onready var button_space: CollisionShape2D = $ButtonSpace
+@export var move_speed: float = 0.1
+@onready var platform: TileMapLayer = $MovingPlatform
+var start_moving = false
+var reverse = false
 
-func _process(delta: float) -> void:
-	if button_pressed:
-		sprite.texture = load("res://assets/kenney_platformerpack/PNG/Tiles/switchGreen_pressed.png")
-		button_space.position.y = 50
-	else:
-		sprite.texture = load("res://assets/kenney_platformerpack/PNG/Tiles/switchGreen.png")
-		
-func _on_button_field_body_entered(body: PhysicsBody2D) -> void:
+func _process(delta):
+	if start_moving:
+		if !reverse:
+			progress_ratio += move_speed * delta
+			if progress_ratio == 1.0:
+				reverse = true
+		else:
+			progress_ratio -= move_speed * delta
+			if progress_ratio == 0.0:
+				reverse = false
+
+func _on_area_2d_body_entered(body: PhysicsBody2D) -> void:
 	if body.get_name() == "Player":
-		body.jump_speed = -800
-		button_pressed = true
-
-func _on_button_field_body_exited(body: PhysicsBody2D) -> void:
-	if body.get_name() == "Player":
-		button_pressed = false
-
+		start_moving = true
 ```
 <h3>Jump Boost Switch</h3>
 When pressed (when the player collides with it), the player gets a boost to jump height, switching it from -425 in level 2 to -800. It's coded to switch to the pressed sprite when the player enters the body of the child Area2D node (ButtonField), and to return to the normal sprite when it exists. Below is the full code:
