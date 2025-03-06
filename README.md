@@ -9,4 +9,10 @@ func _on_pressed() -> void:
 	get_tree().change_scene_to_file(CurrentLevel.current_level)
 </pre>
 
-<h3>Full and Half Saw</h3>
+<h3>Full and Half Saw Obstacles</h3>
+<h3>Moving Saw Obstacles</h3>
+<h3>New Tileset + Spikes</h3>
+<h3>Moving Platform</h3>
+<h3>Falling Weights</h3>
+<h3>Jump Boost Switch</h3>
+<h3>Background</h3>
