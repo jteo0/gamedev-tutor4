@@ -19,3 +19,4 @@ The obstacles used in the level are the half saws on parts of the floor, static 
 <h3>Moving Platform</h3>
 <h3>Jump Boost Switch</h3>
 <h3>Background</h3>
+The background uses a Sprite as a child node of CanvasLayer. The sprite for the background itself, and CanvasLayer so that it automatically follows the camera.
