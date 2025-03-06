@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://bada3wfj60jqr"]
+
+[ext_resource type="Script" path="res://scenes/WinFlag.gd" id="1_afgem"]
+[ext_resource type="Texture2D" uid="uid://b01y2s6ghnd3g" path="res://assets/kenney_platformerpack/PNG/Items/flagRed1.png" id="1_re21r"]
+[ext_resource type="Texture2D" uid="uid://d23seym2lafik" path="res://assets/kenney_platformerpack/PNG/Items/flagRed2.png" id="2_su01w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gtojc"]
+size = Vector2(113, 125)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i2dbh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_re21r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_su01w")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 7.0
+}]
+
+[node name="WinFlag" type="Area2D"]
+script = ExtResource("1_afgem")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4.5, 1.5)
+shape = SubResource("RectangleShape2D_gtojc")
+
+[node name="RedFlag" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_i2dbh")
+animation = &"fly"
+autoplay = "fly"
+frame_progress = 0.718352
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

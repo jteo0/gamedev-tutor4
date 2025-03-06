@@ -2,12 +2,13 @@
 
 [ext_resource type="Script" path="res://scenes/AreaTrigger.gd" id="1_0ty60"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_15gf6"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gn7rn"]
+size = Vector2(128, 84)
 
 [node name="AreaTrigger" type="Area2D"]
 script = ExtResource("1_0ty60")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_15gf6")
+shape = SubResource("RectangleShape2D_gn7rn")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var obstacle : PackedScene
+var hard: bool = (CurrentLevel.current_level == "res://scenes/Level2.tscn")
 
 func _ready():
 	repeat()
@@ -16,5 +17,8 @@ func spawn():
 
 func repeat():
 	spawn()
-	await get_tree().create_timer(1).timeout
+	if hard:
+		await get_tree().create_timer(3).timeout
+	else:
+		await get_tree().create_timer(1).timeout
 	repeat()

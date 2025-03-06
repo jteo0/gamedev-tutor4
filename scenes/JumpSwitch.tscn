@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://cf1b1o8aniwgu"]
+
+[ext_resource type="Script" path="res://scenes/JumpSwitch.gd" id="1_pustl"]
+[ext_resource type="Texture2D" uid="uid://c0na6p0mwqip1" path="res://assets/kenney_platformerpack/PNG/Tiles/switchGreen.png" id="2_lxluw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tci3i"]
+size = Vector2(57, 73)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5d0yy"]
+size = Vector2(94, 78)
+
+[node name="JumpSwitch" type="StaticBody2D"]
+script = ExtResource("1_pustl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_lxluw")
+
+[node name="ButtonSpace" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 27.5)
+shape = SubResource("RectangleShape2D_tci3i")
+
+[node name="ButtonField" type="Area2D" parent="."]
+
+[node name="FieldSpace" type="CollisionShape2D" parent="ButtonField"]
+position = Vector2(1, 25)
+shape = SubResource("RectangleShape2D_5d0yy")
+
+[connection signal="body_entered" from="ButtonField" to="." method="_on_button_field_body_entered"]
+[connection signal="body_exited" from="ButtonField" to="." method="_on_button_field_body_exited"]

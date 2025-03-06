@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c4bqxeni00aa8"]
 
-[ext_resource type="Texture2D" uid="uid://d0xi3jghkp5hk" path="res://Assets/Keanu.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://d0xi3jghkp5hk" path="res://assets/Keanu.png" id="1"]
 [ext_resource type="Script" path="res://scenes/Level2Button.gd" id="2_vw172"]
 
 [node name="WinScreen" type="Sprite2D"]

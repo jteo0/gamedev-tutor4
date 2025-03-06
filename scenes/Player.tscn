@@ -80,3 +80,5 @@ libraries = {
 }
 
 [node name="Camera2D" type="Camera2D" parent="."]
+drag_horizontal_enabled = true
+drag_vertical_enabled = true

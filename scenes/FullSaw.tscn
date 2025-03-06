@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://jbiweanee3f7"]
+
+[ext_resource type="Texture2D" uid="uid://dvv3mspleuvvy" path="res://assets/kenney_platformerpack/PNG/Enemies/saw.png" id="1_06uae"]
+[ext_resource type="Texture2D" uid="uid://cgoa1m3nwy5mr" path="res://assets/kenney_platformerpack/PNG/Enemies/saw_move.png" id="2_db70t"]
+[ext_resource type="PackedScene" uid="uid://dewity8ryinr7" path="res://scenes/AreaTrigger.tscn" id="3_clkmf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g1bg5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_06uae")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_db70t")
+}],
+"loop": true,
+"name": &"spin",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1b0px"]
+radius = 56.0803
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hchi0"]
+radius = 58.0086
+
+[node name="FullSaw" type="StaticBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_g1bg5")
+animation = &"spin"
+autoplay = "spin"
+frame_progress = 0.999997
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1b0px")
+
+[node name="AreaTrigger" parent="." instance=ExtResource("3_clkmf")]
+sceneName = "LoseScreen"
+
+[node name="CollisionShape2D" parent="AreaTrigger" index="0"]
+shape = SubResource("CircleShape2D_hchi0")
+one_way_collision_margin = 0.0
+
+[editable path="AreaTrigger"]

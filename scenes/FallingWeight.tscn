@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1njqonjip2k8"]
+
+[ext_resource type="PackedScene" uid="uid://dewity8ryinr7" path="res://scenes/AreaTrigger.tscn" id="1_voe4w"]
+[ext_resource type="Texture2D" uid="uid://dn0jnesccx37g" path="res://assets/kenney_platformerpack/PNG/Tiles/weight.png" id="2_1d0fb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8vg45"]
+size = Vector2(44, 63)
+
+[node name="FallingWeight" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6.5)
+shape = SubResource("RectangleShape2D_8vg45")
+
+[node name="AreaTrigger" parent="." instance=ExtResource("1_voe4w")]
+scale = Vector2(0.96, 1.65)
+collision_layer = 2
+collision_mask = 2
+sceneName = "LoseScreen"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_1d0fb")
