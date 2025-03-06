@@ -1,7 +1,6 @@
-[gd_scene load_steps=21 format=4 uid="uid://bvqm40battvjk"]
+[gd_scene load_steps=20 format=4 uid="uid://bvqm40battvjk"]
 
 [ext_resource type="PackedScene" uid="uid://bc2fujtl13g10" path="res://scenes/Player.tscn" id="1_lwmaw"]
-[ext_resource type="Script" path="res://scenes/Level2.gd" id="1_lygyr"]
 [ext_resource type="Texture2D" uid="uid://cela4hnu06pql" path="res://assets/kenney_platformerpack/Spritesheets/spritesheet_gr_stone.png" id="2_ifb0h"]
 [ext_resource type="Script" path="res://scenes/Player.gd" id="2_pgq7d"]
 [ext_resource type="PackedScene" uid="uid://bada3wfj60jqr" path="res://scenes/WinFlag.tscn" id="3_mkttv"]
@@ -78,7 +77,6 @@ point_count = 2
 size = Vector2(388, 76)
 
 [node name="Level2" type="Node2D"]
-script = ExtResource("1_lygyr")
 
 [node name="Player" parent="." instance=ExtResource("1_lwmaw")]
 position = Vector2(-428, 407)
