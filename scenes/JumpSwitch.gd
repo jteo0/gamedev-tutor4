@@ -4,8 +4,6 @@ var button_pressed = false
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var button_space: CollisionShape2D = $ButtonSpace
 
-@export var jump_boost: int = 2
-
 func _process(delta: float) -> void:
 	if button_pressed:
 		sprite.texture = load("res://assets/kenney_platformerpack/PNG/Tiles/switchGreen_pressed.png")
