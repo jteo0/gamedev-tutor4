@@ -1,0 +1,124 @@
+[gd_scene load_steps=12 format=3 uid="uid://dcvgnu1bp7ecm"]
+
+[ext_resource type="Texture2D" uid="uid://bl3r35fbx8jv0" path="res://assets/Backgrounds/adofaispace.jpg" id="1_h81my"]
+[ext_resource type="Texture2D" uid="uid://nyyvhy8gtfng" path="res://assets/stage1.png" id="1_lfuvq"]
+[ext_resource type="Script" path="res://scenes/BackButton.gd" id="2_8uhwd"]
+[ext_resource type="Texture2D" uid="uid://8odexkink0rm" path="res://assets/messy_arrow_right_flipped.png" id="2_dnd51"]
+[ext_resource type="Texture2D" uid="uid://cv5e2746t1na0" path="res://assets/stage2.png" id="2_vf0u1"]
+[ext_resource type="FontFile" uid="uid://c13evmrvxbk11" path="res://assets/Fonts/Ethnocentric Rg.otf" id="3_0q734"]
+[ext_resource type="Script" path="res://scenes/StageSelectButton.gd" id="3_2fb31"]
+[ext_resource type="Texture2D" uid="uid://bdyjvwvu8ym4w" path="res://assets/messy_arrow_left.png" id="3_734bw"]
+[ext_resource type="Script" path="res://scenes/UnlockStage2.gd" id="5_kcpre"]
+[ext_resource type="FontFile" uid="uid://tnrnb3wqsc45" path="res://assets/Fonts/Ethnocentric Rg It.otf" id="6_sj00k"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_fftei"]
+frames = 2
+frame_0/texture = ExtResource("3_734bw")
+frame_0/duration = 0.5
+frame_1/texture = ExtResource("2_dnd51")
+frame_1/duration = 0.5
+
+[node name="StageSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_h81my")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+
+[node name="Stage1" type="PanelContainer" parent="MarginContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/Stage1"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/Stage1/VBoxContainer"]
+custom_minimum_size = Vector2(330, 200)
+layout_mode = 2
+texture = ExtResource("1_lfuvq")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Button1" type="Button" parent="MarginContainer/HBoxContainer/MarginContainer/Stage1/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_0q734")
+theme_override_font_sizes/font_size = 28
+text = "STAGE 1"
+script = ExtResource("3_2fb31")
+
+[node name="Stage2" type="PanelContainer" parent="MarginContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/Stage2"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/Stage2/VBoxContainer"]
+custom_minimum_size = Vector2(350, 200)
+layout_mode = 2
+texture = ExtResource("2_vf0u1")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Button2" type="Button" parent="MarginContainer/HBoxContainer/MarginContainer/Stage2/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_0q734")
+theme_override_font_sizes/font_size = 28
+text = "STAGE 2"
+script = ExtResource("3_2fb31")
+scene_to_load = "Level2"
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/Stage2/VBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_sj00k")
+theme_override_font_sizes/font_size = 18
+text = "UNLOCK STAGE 2 AFTER COMPLETING STAGE 1"
+horizontal_alignment = 1
+autowrap_mode = 2
+script = ExtResource("5_kcpre")
+
+[node name="BackButton" type="TextureButton" parent="."]
+z_index = 2
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+texture_normal = SubResource("AnimatedTexture_fftei")
+script = ExtResource("2_8uhwd")
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/MarginContainer/Stage1/VBoxContainer/Button1" to="MarginContainer/HBoxContainer/MarginContainer/Stage1/VBoxContainer/Button1" method="_on_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/MarginContainer/Stage2/VBoxContainer/Button2" to="MarginContainer/HBoxContainer/MarginContainer/Stage2/VBoxContainer/Button2" method="_on_pressed"]
+[connection signal="pressed" from="BackButton" to="BackButton" method="_on_pressed"]

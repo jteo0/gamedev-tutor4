@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://dphv5bbc2sknf"]
+
+[ext_resource type="Script" path="res://scenes/LifeCounter.gd" id="1_td4fs"]
+[ext_resource type="FontFile" uid="uid://b65v4udbm0s3m" path="res://assets/Fonts/Rushford Printed.otf" id="1_thlwn"]
+[ext_resource type="Texture2D" uid="uid://d0q201r6r7bom" path="res://assets/pause.png" id="3_niput"]
+[ext_resource type="Script" path="res://scenes/PauseButton.gd" id="4_d0c71"]
+
+[node name="GUI" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+
+[node name="Label" type="Label" parent="."]
+modulate = Color(0.119396, 0.117218, 0.401594, 1)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_thlwn")
+theme_override_font_sizes/font_size = 48
+script = ExtResource("1_td4fs")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+texture_normal = ExtResource("3_niput")
+script = ExtResource("4_d0c71")
+
+[connection signal="pressed" from="TextureButton" to="TextureButton" method="_on_pressed"]

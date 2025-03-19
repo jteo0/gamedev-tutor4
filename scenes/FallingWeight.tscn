@@ -18,7 +18,7 @@ shape = SubResource("RectangleShape2D_8vg45")
 scale = Vector2(0.96, 1.65)
 collision_layer = 2
 collision_mask = 2
-sceneName = "LoseScreen"
+sceneName = "Level2"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_1d0fb")

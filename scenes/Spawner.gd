@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var obstacle : PackedScene
-var hard: bool = (CurrentLevel.current_level == "res://scenes/Level2.tscn")
+var hard: bool = (Global.current_level == "res://scenes/Level2.tscn")
 
 func _ready():
 	repeat()

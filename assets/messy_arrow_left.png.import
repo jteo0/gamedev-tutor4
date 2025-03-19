@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6024saoh05ug"
-path="res://.godot/imported/4.png-592ce6ff488e5ba82cee58db952ddb56.ctex"
+uid="uid://bdyjvwvu8ym4w"
+path="res://.godot/imported/messy_arrow_left.png-496644022f35faf61949bdf6bf0284e2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/kenney_platformerpack/PNG/Backgrounds/Clouds 4/4.png"
-dest_files=["res://.godot/imported/4.png-592ce6ff488e5ba82cee58db952ddb56.ctex"]
+source_file="res://assets/messy_arrow_left.png"
+dest_files=["res://.godot/imported/messy_arrow_left.png-496644022f35faf61949bdf6bf0284e2.ctex"]
 
 [params]
 

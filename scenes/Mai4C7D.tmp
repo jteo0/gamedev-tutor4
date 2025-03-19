@@ -1,0 +1,83 @@
+[gd_scene load_steps=8 format=3 uid="uid://c3hdbm72deqw8"]
+
+[ext_resource type="Texture2D" uid="uid://bj2aew56l2i28" path="res://assets/kenney_platformerpack/PNG/Players/128x256/Pink/alienPink_front.png" id="1_1lbiq"]
+[ext_resource type="FontFile" uid="uid://b65v4udbm0s3m" path="res://assets/Fonts/Rushford Printed.otf" id="1_e0mig"]
+[ext_resource type="Texture2D" uid="uid://cxhdqyulkgpbq" path="res://assets/kenney_platformerpack/PNG/Players/128x256/Beige/alienBeige_front.png" id="2_pf8rx"]
+[ext_resource type="Texture2D" uid="uid://cgoo1dsxn10fm" path="res://assets/kenney_platformerpack/PNG/Players/128x256/Blue/alienBlue_front.png" id="3_trusd"]
+[ext_resource type="Texture2D" uid="uid://mvux5yvxpo5u" path="res://assets/kenney_platformerpack/PNG/Players/128x256/Green/alienGreen_front.png" id="4_syw6x"]
+[ext_resource type="Texture2D" uid="uid://c5gf52okdos1p" path="res://assets/kenney_platformerpack/PNG/Players/128x256/Yellow/alienYellow_front.png" id="5_0rl27"]
+[ext_resource type="Script" path="res://scenes/ToLoad.gd" id="7_p8tsd"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("1_e0mig")
+theme_override_font_sizes/font_size = 84
+text = "ALIEN ESCAPE LOL"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Pink" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_1lbiq")
+
+[node name="Beige" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_pf8rx")
+
+[node name="Blue" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_trusd")
+
+[node name="Green" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_syw6x")
+
+[node name="Yellow" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_0rl27")
+
+[node name="NewGameButton" type="LinkButton" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("1_e0mig")
+theme_override_font_sizes/font_size = 24
+text = "NEW GAME"
+uri = "Level1"
+script = ExtResource("7_p8tsd")
+
+[node name="StageSelectButton" type="LinkButton" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("1_e0mig")
+theme_override_font_sizes/font_size = 24
+text = "STAGE SELECT"
+script = ExtResource("7_p8tsd")

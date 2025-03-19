@@ -39,7 +39,7 @@ frame = 1
 frame_progress = 0.184349
 
 [node name="AreaTrigger" parent="." instance=ExtResource("3_uu5x8")]
-sceneName = "LoseScreen"
+sceneName = "Level2"
 
 [node name="CollisionShape2D" parent="AreaTrigger" index="0"]
 position = Vector2(0, -7)

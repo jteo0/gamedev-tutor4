@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://oyl5716u6u20"]
+
+[ext_resource type="Texture2D" uid="uid://jemifvx8sbm6" path="res://assets/Backgrounds/Classic_Pursuit_Lofi_Bg.webp" id="1_blq6m"]
+[ext_resource type="FontFile" uid="uid://cyhmv14tc2m3h" path="res://assets/Fonts/Doctor Glitch.otf" id="2_xbrma"]
+[ext_resource type="FontFile" uid="uid://b65v4udbm0s3m" path="res://assets/Fonts/Rushford Printed.otf" id="3_wuniq"]
+[ext_resource type="Script" path="res://scenes/ToLoad.gd" id="4_05vwg"]
+
+[node name="GameOver" type="TextureRect"]
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("1_blq6m")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_xbrma")
+theme_override_font_sizes/font_size = 108
+text = "GAME OVER"
+
+[node name="MenuButton" type="LinkButton" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -137.0
+offset_top = 126.0
+offset_right = 137.0
+offset_bottom = 177.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_wuniq")
+theme_override_font_sizes/font_size = 36
+text = "RETURN TO MAIN MENU"
+script = ExtResource("4_05vwg")
+scene_to_load = "MainMenu"
+
+[connection signal="pressed" from="MenuButton" to="MenuButton" method="_on_pressed"]

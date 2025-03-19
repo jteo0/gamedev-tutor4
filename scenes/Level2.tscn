@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://bvqm40battvjk"]
+[gd_scene load_steps=23 format=4 uid="uid://bvqm40battvjk"]
 
 [ext_resource type="PackedScene" uid="uid://bc2fujtl13g10" path="res://scenes/Player.tscn" id="1_lwmaw"]
 [ext_resource type="Script" path="res://scenes/Level2.gd" id="1_onng7"]
@@ -9,11 +9,13 @@
 [ext_resource type="Texture2D" uid="uid://b45wpn13ajdj4" path="res://assets/kenney_platformerpack/PNG/Tiles/spikes.png" id="4_rd6tj"]
 [ext_resource type="PackedScene" uid="uid://cf1b1o8aniwgu" path="res://scenes/JumpSwitch.tscn" id="5_evvtp"]
 [ext_resource type="PackedScene" uid="uid://jbiweanee3f7" path="res://scenes/FullSaw.tscn" id="6_48sr4"]
-[ext_resource type="Texture2D" uid="uid://k8gx86cnwl7g" path="res://assets/kenney_platformerpack/PNG/Backgrounds/Clouds 4/1.png" id="7_ifbp5"]
+[ext_resource type="Texture2D" uid="uid://k8gx86cnwl7g" path="res://assets/Backgrounds/Clouds 4/1.png" id="7_ifbp5"]
 [ext_resource type="Script" path="res://scenes/MovingPlatformPath.gd" id="12_llvt7"]
 [ext_resource type="PackedScene" uid="uid://de4k5ri8uyetu" path="res://scenes/FullMovingSaw.tscn" id="13_4rwj8"]
 [ext_resource type="Script" path="res://scenes/Spawner.gd" id="13_51u6r"]
 [ext_resource type="PackedScene" uid="uid://c1njqonjip2k8" path="res://scenes/FallingWeight.tscn" id="14_sgwnq"]
+[ext_resource type="PackedScene" uid="uid://dphv5bbc2sknf" path="res://scenes/GUI.tscn" id="16_j1yi8"]
+[ext_resource type="PackedScene" uid="uid://eyd6kybm6fj6" path="res://scenes/PauseMenu.tscn" id="17_h3bd1"]
 [ext_resource type="PackedScene" uid="uid://dewity8ryinr7" path="res://scenes/AreaTrigger.tscn" id="18_reqyu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g3svb"]
@@ -155,22 +157,22 @@ shape = SubResource("RectangleShape2D_wbu5w")
 [node name="DeathZone" parent="." instance=ExtResource("18_reqyu")]
 position = Vector2(3208, 1130)
 scale = Vector2(150, 4.9)
-sceneName = "LoseScreen"
+sceneName = "Level2"
 
 [node name="SpikeZone1" parent="." instance=ExtResource("18_reqyu")]
 position = Vector2(131, 95)
 scale = Vector2(20, 0.785)
-sceneName = "LoseScreen"
+sceneName = "Level2"
 
 [node name="SpikeZone2" parent="." instance=ExtResource("18_reqyu")]
 position = Vector2(4225, -545)
 scale = Vector2(6, 0.785)
-sceneName = "LoseScreen"
+sceneName = "Level2"
 
 [node name="SpikeZone3" parent="." instance=ExtResource("18_reqyu")]
 position = Vector2(3456, -417)
 scale = Vector2(6, 0.785)
-sceneName = "LoseScreen"
+sceneName = "Level2"
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -1
@@ -185,5 +187,11 @@ position = Vector2(900, -2000)
 scale = Vector2(-173.645, 453.124)
 script = ExtResource("13_51u6r")
 obstacle = ExtResource("14_sgwnq")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="GUI" parent="HUD" instance=ExtResource("16_j1yi8")]
+
+[node name="PauseMenu" parent="HUD" instance=ExtResource("17_h3bd1")]
 
 [connection signal="body_entered" from="Path2D/PathFollow2D/MovingPlatform/Area2D" to="Path2D/PathFollow2D" method="_on_area_2d_body_entered"]

@@ -98,4 +98,4 @@ texture = ExtResource("8_7k3dp")
 
 [node name="GUI" parent="HUD" instance=ExtResource("9_og4uk")]
 
-[node name="PauseMenu" parent="HUD" instance=ExtResource("10_gywq0")]
+[node name="PauseMenu" parent="." instance=ExtResource("10_gywq0")]

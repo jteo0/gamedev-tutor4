@@ -1,7 +1,31 @@
-[gd_scene load_steps=2 format=3 uid="uid://mlywl0gssj6j"]
+[gd_scene load_steps=4 format=3 uid="uid://mlywl0gssj6j"]
 
 [ext_resource type="Texture2D" uid="uid://d0xi3jghkp5hk" path="res://assets/Keanu.png" id="1_lwsjo"]
+[ext_resource type="FontFile" uid="uid://b65v4udbm0s3m" path="res://assets/Fonts/Rushford Printed.otf" id="2_i0gxt"]
+[ext_resource type="Script" path="res://scenes/ToLoad.gd" id="3_a2lv7"]
 
-[node name="WinScreen" type="Sprite2D"]
-position = Vector2(512.329, 294.151)
+[node name="EndScreen" type="Sprite2D"]
+position = Vector2(576.164, 327)
+scale = Vector2(1.12468, 1.13485)
 texture = ExtResource("1_lwsjo")
+
+[node name="LinkButton" type="LinkButton" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -660.0
+offset_top = -235.5
+offset_right = -364.0
+offset_bottom = -168.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_i0gxt")
+theme_override_font_sizes/font_size = 48
+text = "RETURN TO MENU?"
+script = ExtResource("3_a2lv7")
+scene_to_load = "MainMenu"
+
+[connection signal="pressed" from="LinkButton" to="LinkButton" method="_on_pressed"]

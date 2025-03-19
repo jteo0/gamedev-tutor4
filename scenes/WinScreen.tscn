@@ -1,17 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://c4bqxeni00aa8"]
+[gd_scene load_steps=4 format=3 uid="uid://c4bqxeni00aa8"]
 
-[ext_resource type="Texture2D" uid="uid://d0xi3jghkp5hk" path="res://assets/Keanu.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://bf8t17j7iul47" path="res://assets/Backgrounds/Love_Letters_Lofi_Bg.webp" id="1_fvmke"]
+[ext_resource type="FontFile" uid="uid://c13evmrvxbk11" path="res://assets/Fonts/Ethnocentric Rg.otf" id="2_jr5u4"]
 [ext_resource type="Script" path="res://scenes/Level2Button.gd" id="2_vw172"]
 
-[node name="WinScreen" type="Sprite2D"]
-position = Vector2(512.329, 294.151)
-texture = ExtResource("1")
+[node name="WinScreen" type="TextureRect"]
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("1_fvmke")
 
 [node name="Level2Button" type="Button" parent="."]
-offset_left = -105.329
-offset_top = 59.849
-offset_right = 167.671
-offset_bottom = 117.849
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -136.5
+offset_top = -29.0
+offset_right = 136.5
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_jr5u4")
+theme_override_font_sizes/font_size = 48
 text = "TO THE NEXT LEVEL"
 script = ExtResource("2_vw172")
 

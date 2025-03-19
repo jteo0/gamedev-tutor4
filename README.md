@@ -93,3 +93,13 @@ func _on_button_field_body_exited(body: PhysicsBody2D) -> void:
 
 <h3>Background</h3>
 The background uses Sprite2D as a child node of CanvasLayer. The Sprite2D is used for the background itself, and the is CanvasLayer so that it automatically follows the camera.
+
+# Tutorial 6
+References:<br>
+- https://docs.godotengine.org/en/latest/tutorials/scripting/pausing_games.html<br>
+- https://www.dafont.com/ (fonts)<br>
+- https://www.reddit.com/r/godot/comments/18a3x1s/is_it_possible_to_overlay_a_scene_over_another/<br>
+- https://forum.godotengine.org/t/exit-button-in-godot/22130<br>
+- https://www.youtube.com/watch?v=e9-WQg1yMCY<br>
+- https://docs.godotengine.org/en/stable/tutorials/scripting/pausing_games.html#pause-menu-example<br>
+- https://forum.godotengine.org/t/how-can-i-disable-a-button/4947

@@ -1,0 +1,147 @@
+[gd_scene load_steps=21 format=3 uid="uid://c3hdbm72deqw8"]
+
+[ext_resource type="Texture2D" uid="uid://bl3r35fbx8jv0" path="res://assets/Backgrounds/adofaispace.jpg" id="1_6kr13"]
+[ext_resource type="FontFile" uid="uid://b65v4udbm0s3m" path="res://assets/Fonts/Rushford Printed.otf" id="1_e0mig"]
+[ext_resource type="FontFile" uid="uid://cyhmv14tc2m3h" path="res://assets/Fonts/Doctor Glitch.otf" id="2_26oly"]
+[ext_resource type="Texture2D" uid="uid://cpoeetruhd5yh" path="res://assets/kenney_platformerpack/PNG/Players/128x256/Pink/alienPink_walk1.png" id="3_mamh1"]
+[ext_resource type="Texture2D" uid="uid://hlbua067qj7y" path="res://assets/kenney_platformerpack/PNG/Players/128x256/Pink/alienPink_walk2.png" id="4_jo1bs"]
+[ext_resource type="Texture2D" uid="uid://mltam77yiije" path="res://assets/kenney_platformerpack/PNG/Players/128x256/Beige/alienBeige_walk1.png" id="5_e8hgy"]
+[ext_resource type="Texture2D" uid="uid://btdvm360rg2si" path="res://assets/kenney_platformerpack/PNG/Players/128x256/Beige/alienBeige_walk2.png" id="6_c13vo"]
+[ext_resource type="Script" path="res://scenes/ToLoad.gd" id="7_p8tsd"]
+[ext_resource type="Texture2D" uid="uid://n3ltphk2jb6b" path="res://assets/kenney_platformerpack/PNG/Players/128x256/Blue/alienBlue_walk1.png" id="7_xb0eu"]
+[ext_resource type="Texture2D" uid="uid://dacb2virqyisg" path="res://assets/kenney_platformerpack/PNG/Players/128x256/Blue/alienBlue_walk2.png" id="8_4djbr"]
+[ext_resource type="Script" path="res://scenes/ExitGame.gd" id="9_cqyeh"]
+[ext_resource type="Texture2D" uid="uid://cwa3cd2roqhdj" path="res://assets/kenney_platformerpack/PNG/Players/128x256/Green/alienGreen_walk1.png" id="9_juhsr"]
+[ext_resource type="Texture2D" uid="uid://dy8b2kyc3g1ns" path="res://assets/kenney_platformerpack/PNG/Players/128x256/Green/alienGreen_walk2.png" id="10_y3qxy"]
+[ext_resource type="Texture2D" uid="uid://c387lw67xtj8k" path="res://assets/kenney_platformerpack/PNG/Players/128x256/Yellow/alienYellow_walk1.png" id="11_m60q4"]
+[ext_resource type="Texture2D" uid="uid://bufjdat1nv3rv" path="res://assets/kenney_platformerpack/PNG/Players/128x256/Yellow/alienYellow_walk2.png" id="12_4i6pu"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_ml64r"]
+frames = 2
+frame_0/texture = ExtResource("3_mamh1")
+frame_0/duration = 0.3
+frame_1/texture = ExtResource("4_jo1bs")
+frame_1/duration = 0.3
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_w4t2b"]
+frames = 2
+frame_0/texture = ExtResource("5_e8hgy")
+frame_0/duration = 0.3
+frame_1/texture = ExtResource("6_c13vo")
+frame_1/duration = 0.3
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_qhhul"]
+frames = 2
+frame_0/texture = ExtResource("7_xb0eu")
+frame_0/duration = 0.3
+frame_1/texture = ExtResource("8_4djbr")
+frame_1/duration = 0.3
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_u70sn"]
+frames = 2
+frame_0/texture = ExtResource("9_juhsr")
+frame_0/duration = 0.3
+frame_1/texture = ExtResource("10_y3qxy")
+frame_1/duration = 0.3
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_nw60u"]
+frames = 2
+frame_0/texture = ExtResource("11_m60q4")
+frame_0/duration = 0.3
+frame_1/texture = ExtResource("12_4i6pu")
+frame_1/duration = 0.3
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_6kr13")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_26oly")
+theme_override_font_sizes/font_size = 84
+text = "ALIEN ESCAPE"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Pink" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AnimatedTexture_ml64r")
+
+[node name="Beige" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AnimatedTexture_w4t2b")
+
+[node name="Blue" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AnimatedTexture_qhhul")
+
+[node name="Green" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AnimatedTexture_u70sn")
+
+[node name="Yellow" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AnimatedTexture_nw60u")
+
+[node name="NewGameButton" type="LinkButton" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("1_e0mig")
+theme_override_font_sizes/font_size = 24
+text = "NEW GAME"
+script = ExtResource("7_p8tsd")
+
+[node name="StageSelectButton" type="LinkButton" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("1_e0mig")
+theme_override_font_sizes/font_size = 24
+text = "STAGE SELECT"
+script = ExtResource("7_p8tsd")
+scene_to_load = "StageSelect"
+
+[node name="Exit" type="LinkButton" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("1_e0mig")
+theme_override_font_sizes/font_size = 24
+text = "EXIT GAME"
+script = ExtResource("9_cqyeh")
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/NewGameButton" to="MarginContainer/HBoxContainer/VBoxContainer/NewGameButton" method="_on_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/StageSelectButton" to="MarginContainer/HBoxContainer/VBoxContainer/StageSelectButton" method="_on_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Exit" to="MarginContainer/HBoxContainer/VBoxContainer/Exit" method="_on_pressed"]
