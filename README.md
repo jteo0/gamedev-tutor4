@@ -94,8 +94,13 @@ func _on_button_field_body_exited(body: PhysicsBody2D) -> void:
 <h3>Background</h3>
 The background uses Sprite2D as a child node of CanvasLayer. The Sprite2D is used for the background itself, and the is CanvasLayer so that it automatically follows the camera.
 
+<h4>Resources</h4>
+- https://docs.godotengine.org/en/stable/classes/class_pathfollow2d.html#class-pathfollow2d<br>
+- https://stackoverflow.com/questions/75617655/when-should-i-use-a-kinematicbody-or-a-rigidbody-for-2d-platformer-characters<br>
+- Godot Documentation
+
 # Tutorial 6
-References:<br>
+<h4>References</h4>
 - https://docs.godotengine.org/en/latest/tutorials/scripting/pausing_games.html<br>
 - https://www.dafont.com/ (fonts)<br>
 - https://www.reddit.com/r/godot/comments/18a3x1s/is_it_possible_to_overlay_a_scene_over_another/<br>
