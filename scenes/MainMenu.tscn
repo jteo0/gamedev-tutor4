@@ -76,16 +76,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("2_26oly")
@@ -93,31 +89,31 @@ theme_override_font_sizes/font_size = 84
 text = "ALIEN ESCAPE"
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Pink" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="Pink" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 texture = SubResource("AnimatedTexture_ml64r")
 
-[node name="Beige" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="Beige" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 texture = SubResource("AnimatedTexture_w4t2b")
 
-[node name="Blue" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="Blue" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 texture = SubResource("AnimatedTexture_qhhul")
 
-[node name="Green" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="Green" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 texture = SubResource("AnimatedTexture_u70sn")
 
-[node name="Yellow" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="Yellow" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 texture = SubResource("AnimatedTexture_nw60u")
 
-[node name="NewGameButton" type="LinkButton" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="NewGameButton" type="LinkButton" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("1_e0mig")
@@ -125,7 +121,7 @@ theme_override_font_sizes/font_size = 24
 text = "NEW GAME"
 script = ExtResource("7_p8tsd")
 
-[node name="StageSelectButton" type="LinkButton" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="StageSelectButton" type="LinkButton" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("1_e0mig")
@@ -134,7 +130,7 @@ text = "STAGE SELECT"
 script = ExtResource("7_p8tsd")
 scene_to_load = "StageSelect"
 
-[node name="Exit" type="LinkButton" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Exit" type="LinkButton" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("1_e0mig")
@@ -142,6 +138,6 @@ theme_override_font_sizes/font_size = 24
 text = "EXIT GAME"
 script = ExtResource("9_cqyeh")
 
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/NewGameButton" to="MarginContainer/HBoxContainer/VBoxContainer/NewGameButton" method="_on_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/StageSelectButton" to="MarginContainer/HBoxContainer/VBoxContainer/StageSelectButton" method="_on_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Exit" to="MarginContainer/HBoxContainer/VBoxContainer/Exit" method="_on_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/NewGameButton" to="MarginContainer/VBoxContainer/NewGameButton" method="_on_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/StageSelectButton" to="MarginContainer/VBoxContainer/StageSelectButton" method="_on_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Exit" to="MarginContainer/VBoxContainer/Exit" method="_on_pressed"]

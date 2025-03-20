@@ -1,6 +1,5 @@
 extends Control
 
-
 func _ready() -> void:
 	Global.pause_pressed.connect(_on_pause_pressed_received)
 	visible = false

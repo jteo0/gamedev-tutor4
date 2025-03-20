@@ -100,6 +100,162 @@ The background uses Sprite2D as a child node of CanvasLayer. The Sprite2D is use
 - Godot Documentation
 
 # Tutorial 6
+For tutorial 6, the following features were added/polished:<br>
+<h3>Main Menu</h3>
+<p>The main menu has a ControlNode as its rood node, with a MarginContainer child node comprising of a VboxContainer that contains the Title (Label), HBoxContainer with textures (HboxContainer, TextureRect), and three link buttons which start the game, lead to the stage select screen, and exit the game respectively.</p>
+<p>The textures in the Hbox are animated, which is done by making a new animation texture in the textures variable of TextureRect, setting it to 2 frames, and putting in the sprites I wanted for each frame of the animated texture.</p>
+<p>The three link buttons use this script to work:</p>
+
+```py
+extends LinkButton
+
+@export var scene_to_load: String = "Level1"
+
+func _on_pressed() -> void:
+	var current_scene = get_tree().get_current_scene().get_name()
+	if current_scene == "GameOver":
+		Global.lives = 5
+	get_tree().change_scene_to_file("res://scenes/" + scene_to_load + ".tscn")
+
+```
+The MainMenu also has a background made using a TextureRectangle that's a direct child of the root node.
+<h3>Stage Selection</h3>
+<p>The stage select scene constists of two panel containers arranged using a MarginContainer and an HBoxContainer and a back button leading back to the menu outside of the MarginContainer. Inside each panel container is a VBoxContainer which contains a TextureRect with an image of the corresponding stage and a Button under it with the name of the stage. Under the stage 2 button there is a label that only appears if the player hasn't unlocked the second stage, after which it won't appear.</p>
+The following is the script used in the buttons for loading the stages:<br>
+
+```py
+extends Button
+
+@export var scene_to_load: String = "Level1"
+
+func _ready() -> void:
+	if scene_to_load == "Level2":
+		if !Global.level2_unlocked:
+			disabled = true
+
+func _on_pressed() -> void:
+	if !disabled:
+		get_tree().change_scene_to_file("res://scenes/" + scene_to_load + ".tscn")
+
+```
+The next one is the script for making the label under stage 2 appear and disappear:<br>
+
+```py
+extends Label
+
+func _ready() -> void:
+	if !Global.level2_unlocked:
+		visible = true
+	else:
+		visible = false
+
+```
+The back button is an animated TextureButton (animated the same way as the TextureRect in the main menu) that uses the following script:<br>
+
+```py
+extends TextureButton
+	
+func _on_pressed() -> void:
+	print("press")
+	get_tree().change_scene_to_file("res://scenes/MainMenu.tscn")
+
+```
+<h3>Exit Game</h3>
+There are two ways to exit the game, through the main menu link button that says EXIT GAME, and the button in the pause screen that says EXIT GAME. Both use the following script to exit the game:<br>
+
+```py
+func _on_exit_pressed() -> void:
+	get_tree().quit()
+```
+<h3>Life Counter and GUI</h3>
+The GUI scene contains the life counter for the player and a pause button (to be explained later). The life counter checks the lives variable in the global script global.gd, and the label adjusts accordingly.<br>
+
+```py
+extends Label
+
+func _process(_delta):
+	self.text = "Lives : " + str(Global.lives)
+```
+Every death method in stages 1 and 2 will subtract 1 from Global.lives, so and reset the stage, so that the player restarts the stage and has one less life every time. Transitioning from stage 1 to 2 will not reset the amount of lives the player has, but getting a game over and restarting or quitting to the menu and trying again will.
+<h3>Game Over</h3>
+When the amount of lives the player has reaches zero, the game over scene will appear. On it, there is a label proclaming 'GAME OVER' and a LinkButton that leads back to the main menu. The script for the link button is the same as the LinkButtons on the main menu.
+<h3>Level Transitions</h3>
+When the player reaches the objective in stage 1, the WinScreen scene will appear. It consists of a TextureRect for the background and a button that leads to stage 2.<br>
+
+```py
+extends Button
+
+func _on_pressed() -> void:
+	if get_parent().name == "WinScreen":
+		Global.current_level = "res://scenes/Level2.tscn"
+	get_tree().change_scene_to_file(Global.current_level)
+```
+<h3>Pausing</h3>
+<p>In the scenes Level1 and Level2, the player can pause the game by either pressing the escape key or clicking on the pause button on the top right of the screen. When either is done, the game will pause, and the PauseMenu scene will be overlaid above whichever level is playing.</p>
+<p>In the case of the pause button, pressing on it will emit a signal that connects to the pause menu scene. When it is received, the pause menu will appear.</p>
+
+```py
+# PauseButton.gd
+extends TextureButton
+
+func _on_pressed() -> void:
+	Global.pause_pressed.emit()
+
+# The signal in global.gd so that a different scene can receive it
+signal pause_pressed
+
+# in PauseMenu.gd
+func _ready() -> void:
+	Global.pause_pressed.connect(_on_pause_pressed_received)
+
+func pause():
+	get_tree().paused = true
+	visible = true
+
+func _on_pause_pressed_received():
+	pause()
+```
+<p>The pause menu as a whole consists of a resume button that resumes the game (clicking escape again also resumes the game, but clicking on the pause button on the top right does not), the quit to menu button that returns the player to the main menu, and the exit game button that exits the game. The following is the script as a whole for the PauseMenu scene:</p>
+
+```py
+extends Control
+
+func _ready() -> void:
+	Global.pause_pressed.connect(_on_pause_pressed_received)
+	visible = false
+
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("escape") and !get_tree().paused:
+		pause()
+	elif Input.is_action_just_pressed("escape") and get_tree().paused:
+		resume()
+
+func resume():
+	get_tree().paused = false
+	visible = false
+	
+func pause():
+	get_tree().paused = true
+	visible = true
+
+func _on_resume_pressed() -> void:
+	resume()
+	
+func _on_menu_pressed() -> void:
+	resume()
+	get_tree().change_scene_to_file("res://scenes/MainMenu.tscn")
+
+func _on_exit_pressed() -> void:
+	get_tree().quit()
+
+func _on_pause_pressed_received():
+	pause()
+
+```
+<p>Also, the PauseMenu scene as a whole has its ProcessMode set to always so that it still works even when the rest of the game is paused.</p>
+
+<h3>Fonts</h3>
+For the font in the labels and buttons, I imported fonts from dafont.com and dragged them into the font variable of each nodes' Theme Override and adjusted their sizes accordingly.<br>
 <h4>References</h4>
 - https://docs.godotengine.org/en/latest/tutorials/scripting/pausing_games.html<br>
 - https://www.dafont.com/ (fonts)<br>
